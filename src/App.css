@@ -1,38 +1,336 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
+body {
+  font-family: 'Nunito', sans-serif;
+  overflow-x: hidden;
+  background: linear-gradient(135deg, #ffb3d9 0%, #ffe6f2 50%, #e1f5fe 100%);
+  min-height: 100vh;
+}
+
+.App {
+  min-height: 100vh;
+  width: 100vw;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 380px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  position: relative;
+  z-index: 10;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #2c3e50;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.seasons-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+  height: 50vh;
+  max-height: 400px;
+  padding: 0 10px;
+}
+
+.season-button {
+  border: none;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.08),
+    0 4px 16px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  position: relative;
+  overflow: hidden;
+  font-family: 'Nunito', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.season-button:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.12),
+    0 8px 24px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.season-button:active {
+  transform: translateY(-2px) scale(0.98);
+  box-shadow: 
+    0 8px 20px rgba(0, 0, 0, 0.15),
+    0 3px 8px rgba(0, 0, 0, 0.1),
+    inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.season-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: all 0.6s ease;
+  opacity: 0;
+}
+
+.season-button:hover::before {
+  left: 100%;
+  opacity: 1;
+}
+
+/* Efecto de brillo sutil */
+.season-button::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  height: 40%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 100%
+  );
+  border-radius: 20px 20px 8px 8px;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.button-content {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 6px;
+  text-align: center;
+  position: relative;
+  z-index: 3;
+  padding: 12px;
+}
+
+.emoji {
+  font-size: 36px;
+  margin-bottom: 4px;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+  transition: transform 0.3s ease;
+}
+
+.season-button:hover .emoji {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.japanese-text {
+  font-size: 17px;
+  font-weight: 800;
+  color: #2c3e50;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+  line-height: 1.1;
+  letter-spacing: 0.5px;
+}
+
+.season-name {
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+  opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+.season-info {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 20px 28px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.08),
+    0 4px 16px rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.season-info::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, currentColor, transparent);
+  opacity: 0.3;
+}
+
+.season-description {
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 8px;
+  opacity: 0.75;
+  font-style: italic;
+  letter-spacing: 0.3px;
+}
+
+.falling-emoji {
+  position: fixed;
+  top: -50px;
+  left: 0;
+  font-size: 28px;
+  pointer-events: none;
+  z-index: 1000;
+  user-select: none;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Responsive adjustments for mobile */
+@media (max-width: 480px) {
+  .App {
+    padding: 15px;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .container {
+    max-width: 340px;
+    gap: 25px;
+  }
+  
+  .title {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  
+  .seasons-grid {
+    gap: 15px;
+    padding: 0 5px;
+    height: 45vh;
+  }
+  
+  .season-button {
+    min-height: 100px;
+    border-radius: 20px;
+  }
+  
+  .emoji {
+    font-size: 30px;
+  }
+  
+  .japanese-text {
+    font-size: 15px;
+  }
+  
+  .season-name {
+    font-size: 10px;
+  }
+  
+  .season-info {
+    font-size: 16px;
+    padding: 16px 22px;
+  }
+  
+  .button-content {
+    padding: 8px;
+    gap: 4px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 360px) {
+  .container {
+    max-width: 300px;
+  }
+  
+  .title {
+    font-size: 22px;
+  }
+  
+  .seasons-grid {
+    gap: 12px;
+  }
+  
+  .season-button {
+    min-height: 90px;
+    border-radius: 18px;
+  }
+  
+  .emoji {
+    font-size: 24px;
+  }
+  
+  .japanese-text {
+    font-size: 13px;
+  }
+  
+  .season-name {
+    font-size: 10px;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (orientation: landscape) and (max-height: 500px) {
+  .container {
+    height: auto;
+    padding: 10px 0;
+  }
+  
+  .title {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .seasons-grid {
+    height: auto;
+    max-height: 280px;
+  }
+  
+  .season-button {
+    min-height: 80px;
   }
 }
