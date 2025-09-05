@@ -67,19 +67,19 @@ const FallingEmoji: React.FC<{ emoji: string; delay: number; id: number; onCompl
   const horizontalMovement = Math.random() * 60 - 30; // Movimiento horizontal aleatorio más sutil
   const startX = Math.random() * window.innerWidth; // Usar toda la anchura de la pantalla
   const duration = 10 + Math.random() * 6; // Duración consistente
-  
+
   return (
     <motion.div
       key={`emoji-${id}`}
       className="falling-emoji"
-      initial={{ 
-        y: -100, 
+      initial={{
+        y: -100,
         x: startX,
         rotate: Math.random() * 360,
         opacity: 0,
         scale: 0.3 + Math.random() * 0.5
       }}
-      animate={{ 
+      animate={{
         y: window.innerHeight + 100,
         x: startX + horizontalMovement, // Añadir deriva horizontal
         rotate: [null, 180 + Math.random() * 360, 720 + Math.random() * 180],
@@ -134,7 +134,7 @@ function App() {
 
   const handleSeasonClick = (season: Season) => {
     setCurrentSeason(season);
-    
+
     // Crear emojis que caen con variedades de la estación
     const seasonEmojis = seasons[season].emojis;
     const baseId = Date.now() + emojiCounter * 1000; // ID base único
@@ -143,14 +143,14 @@ function App() {
       emoji: seasonEmojis[Math.floor(Math.random() * seasonEmojis.length)],
       delay: i * 0.25 // Delay más espaciado para efecto más suave
     }));
-    
+
     // Agregar nuevos emojis a los existentes en lugar de reemplazarlos
     setFallingEmojis(prev => [...prev, ...newEmojis]);
     setEmojiCounter(prev => prev + 1);
-    
+
     // Limpieza de seguridad: eliminar emojis que lleven más de 25 segundos
     setTimeout(() => {
-      setFallingEmojis(prev => prev.filter(emoji => 
+      setFallingEmojis(prev => prev.filter(emoji =>
         !newEmojis.some(newEmoji => newEmoji.id === emoji.id)
       ));
     }, 25000);
@@ -164,7 +164,7 @@ function App() {
   };
 
   return (
-    <div 
+    <div
       className="App"
       style={{
         background: currentColors.background,
@@ -172,7 +172,7 @@ function App() {
       }}
     >
       <div className="container">
-        <motion.h1 
+        <motion.h1
           className="title"
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -180,7 +180,7 @@ function App() {
         >
           🌈 Estaciones Kawaii 🌈
         </motion.h1>
-        
+
         <div className="seasons-grid">
           {(Object.keys(seasons) as Season[]).map((season) => (
             <motion.button
@@ -188,25 +188,25 @@ function App() {
               className="season-button"
               onClick={() => handleSeasonClick(season)}
               style={{
-                background: currentSeason === season 
+                background: currentSeason === season
                   ? `linear-gradient(135deg, ${seasons[season].colors.primary}40, ${seasons[season].colors.secondary}60)`
                   : 'rgba(255, 255, 255, 0.9)',
-                border: currentSeason === season 
+                border: currentSeason === season
                   ? `2px solid ${seasons[season].colors.accent}80`
                   : '2px solid rgba(255, 255, 255, 0.3)',
                 color: '#2c3e50'
               }}
-              whileHover={{ 
+              whileHover={{
                 y: -8,
                 scale: 1.02
               }}
-              whileTap={{ 
+              whileTap={{
                 y: -2,
-                scale: 0.98 
+                scale: 0.98
               }}
-              transition={{ 
-                type: "spring", 
-                stiffness: 400, 
+              transition={{
+                type: "spring",
+                stiffness: 400,
                 damping: 25,
                 mass: 0.8
               }}
@@ -219,7 +219,7 @@ function App() {
             </motion.button>
           ))}
         </div>
-        
+
         {currentSeason && (
           <motion.div
             className="season-info"
@@ -233,7 +233,7 @@ function App() {
           </motion.div>
         )}
       </div>
-      
+
       <AnimatePresence mode="sync">
         {fallingEmojis.map((emoji) => (
           <FallingEmoji

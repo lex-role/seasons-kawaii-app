@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap");
 
 * {
   box-sizing: border-box;
@@ -7,7 +7,7 @@
 }
 
 body {
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   overflow-x: hidden;
   background: linear-gradient(135deg, #ffb3d9 0%, #ffe6f2 50%, #e1f5fe 100%);
   min-height: 100vh;
@@ -65,13 +65,11 @@ body {
   background: rgba(255, 255, 255, 0.9);
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 
-    0 12px 40px rgba(0, 0, 0, 0.08),
-    0 4px 16px rgba(0, 0, 0, 0.04),
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04),
     inset 0 1px 0 rgba(255, 255, 255, 0.6);
   position: relative;
   overflow: hidden;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -82,22 +80,18 @@ body {
 
 .season-button:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 
-    0 20px 60px rgba(0, 0, 0, 0.12),
-    0 8px 24px rgba(0, 0, 0, 0.08),
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12), 0 8px 24px rgba(0, 0, 0, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .season-button:active {
   transform: translateY(-2px) scale(0.98);
-  box-shadow: 
-    0 8px 20px rgba(0, 0, 0, 0.15),
-    0 3px 8px rgba(0, 0, 0, 0.1),
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), 0 3px 8px rgba(0, 0, 0, 0.1),
     inset 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .season-button::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
@@ -120,7 +114,7 @@ body {
 
 /* Efecto de brillo sutil */
 .season-button::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 2px;
   left: 2px;
@@ -184,9 +178,7 @@ body {
   padding: 20px 28px;
   background: rgba(255, 255, 255, 0.95);
   border-radius: 20px;
-  box-shadow: 
-    0 12px 40px rgba(0, 0, 0, 0.08),
-    0 4px 16px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.4);
@@ -195,7 +187,7 @@ body {
 }
 
 .season-info::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -236,45 +228,45 @@ body {
   .App {
     padding: 15px;
   }
-  
+
   .container {
     max-width: 340px;
     gap: 25px;
   }
-  
+
   .title {
     font-size: 24px;
     margin-bottom: 15px;
   }
-  
+
   .seasons-grid {
     gap: 15px;
     padding: 0 5px;
     height: 45vh;
   }
-  
+
   .season-button {
     min-height: 100px;
     border-radius: 20px;
   }
-  
+
   .emoji {
     font-size: 30px;
   }
-  
+
   .japanese-text {
     font-size: 15px;
   }
-  
+
   .season-name {
     font-size: 10px;
   }
-  
+
   .season-info {
     font-size: 16px;
     padding: 16px 22px;
   }
-  
+
   .button-content {
     padding: 8px;
     gap: 4px;
@@ -286,28 +278,28 @@ body {
   .container {
     max-width: 300px;
   }
-  
+
   .title {
     font-size: 22px;
   }
-  
+
   .seasons-grid {
     gap: 12px;
   }
-  
+
   .season-button {
     min-height: 90px;
     border-radius: 18px;
   }
-  
+
   .emoji {
     font-size: 24px;
   }
-  
+
   .japanese-text {
     font-size: 13px;
   }
-  
+
   .season-name {
     font-size: 10px;
   }
@@ -319,17 +311,17 @@ body {
     height: auto;
     padding: 10px 0;
   }
-  
+
   .title {
     font-size: 20px;
     margin-bottom: 10px;
   }
-  
+
   .seasons-grid {
     height: auto;
     max-height: 280px;
   }
-  
+
   .season-button {
     min-height: 80px;
   }
